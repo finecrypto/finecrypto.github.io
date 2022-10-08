@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Fine-grained Cryptography</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Vaalea - html5 & css3 free template from Css-workshop.com made by Frontoes.com">
+	<meta name="keywords" content="free html template, free css template, one page template">
+	<meta name="author" content="Frontoes.com for Css-workshop.com">
+	
+
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+    <script type="text/javascript" src="js/jquery.viewportchecker.js"></script>
+    <script type="text/javascript" src="owl.carousel/owl-carousel/owl.carousel.min.js"></script>
+
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/animate.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,600,300,700italic,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='owl.carousel/owl-carousel/owl.carousel.css' rel='stylesheet' type='text/css'>
+    <link href='owl.carousel/owl-carousel/owl.theme.css' rel='stylesheet' type='text/css'>
+    <link href='owl.carousel/owl-carousel/owl.transitions.css' rel='stylesheet' type='text/css'>
+		<link type="image/ico" rel="shortcut icon" href="favicon.png">
+	<script type="text/javascript">
+		$(function() {
+			/* UP BUTTON */
+			$(".up-button").click(function(e) {
+				e.preventDefault();
+				$.scrollTo(0, 1000);
+			});
+			/* UP BUTTON */
+			
+			/* FIXED NAVBAR */
+			var beginingPositionOfMenu = $("#top_menu").offset().top;
+			var navParentPaddingBottom = parseInt($("#top_menu").parent().css("padding-bottom").replace("px",""));
+			$(window).scroll(function(){
+				if($(this).scrollTop() > beginingPositionOfMenu) {
+					$("#top_menu").addClass("navbar-fixed-top");
+					$("#top_menu").parent().css("padding-bottom", navParentPaddingBottom + $("#top_menu").height());
+				} else {
+					$("#top_menu").removeClass("navbar-fixed-top");
+					$("#top_menu").parent().css("padding-bottom", navParentPaddingBottom);
+				}
+				if ($(this).scrollTop() > 400){ 
+					$('.up-button').css('display','inline-block'); 
+				}
+				else{
+					$('.up-button').css('display','none');
+				}
+			});
+			/* FIXED NAVBAR */
+			
+			/* MENU */
+			$("ul.top_menu").find('.nav_link').click(function(){
+				var $href = $(this).attr('href');
+			    var parts = $href.split('#'),
+			    trgt = parts[1],
+			    target_offset = $('#'+trgt).offset(),
+			    target_top = target_offset.top - 90;
+  				$('html, body').animate({scrollTop:target_top}, 500);
+   				$('ul.top_menu').children().removeClass();
+   				$(this).parent().addClass('active');
+			});
+			/* MENU */
+			
+			/* MODAL TRIGGER */
+			$(".modal_trigger").click(function(e) {
+				e.preventDefault();
+				$('#myModal').modal({ show: 1 })
+			});
+			/* MODAL TRIGGER */
+			
+			$(".portfolio-item").each(function() {
+				var parentHeight = $(this).height();
+				var childHeight = $(this).find(".portfolio-description h4").outerHeight(true) + $(this).find(".portfolio-description p").outerHeight(true);
+				var topSpace = (parentHeight - childHeight) / 2;
+				$(this).find(".portfolio-description").css({"padding-top": topSpace + "px", "padding-bottom": topSpace + "px"});
+			});
+			
+			sameHeight(".pricing-description");
+			
+		});
+		
+		function sameHeight(blocks) {
+			var i = 0;
+			var maxVal;
+			$(blocks).each(function() {
+				if(i == 0) {
+					maxVal = $(this).height();
+				} else {
+					if($(this).outerHeight() > maxVal) {
+						maxVal = $(this).height();
+					}
+				}
+				i++;
+			});
+			
+			$(blocks).each(function() {
+				$(this).height(maxVal);
+			});
+		}
+        /* owl carousel */
+		$(document).ready(function () {
+
+		    var owl = $(".owl-carousel-1");
+		    var owl2 = $(".owl-carousel-2");
+
+		    owl.owlCarousel({
+		        items: 5, //10 items above 1000px browser width
+		        itemsDesktop: [1000, 5], //5 items between 1000px and 901px
+		        itemsDesktopSmall: [900, 3], // betweem 900px and 601px
+		        itemsTablet: [768, 1],
+		        autoPlay: 2000,
+		        stopOnHover: true,
+		        pagination: false,
+		    });
+		    owl2.owlCarousel({
+		        items: 1, //10 items above 1000px browser width
+		        itemsDesktop: [1000, 1], //5 items between 1000px and 901px
+		        itemsDesktopSmall: [900, 1], // betweem 900px and 601px
+		        itemsTablet: [768,1],
+		        autoPlay: 2000,
+		        stopOnHover: true,
+		        pagination: false,
+                transitionStyle: "fade",
+		    });
+		});
+		/* VIEWPORT CHECKER */
+		$(document).ready(function () {
+		    $('.module-title').viewportChecker({
+		        classToAdd: 'zoomIn visible animated'
+		    });
+		    $('.services-item i').viewportChecker({
+		        classToAdd: 'zoomIn visible animated'
+		    });
+		});
+	</script>
+</head>
+<body>
+    <div class="header">
+        <nav id="top_menu" class="navbar navbar_top navbar-inverse" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right top_menu">
+                        <li><a href="#home" class="nav_link">Home</a></li>
+                        <li><a href="#news" class="dropdown-toggle nav_link">Overview</a></li>
+                        <li><a href="#team" class="nav_link">Speakers</a></li>
+                        <li><a href="#services" class="nav_link">Schedule</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="content">
+        <div class="sub_content_fixed" style="background-image: url('img/iit.jpeg');">
+            <div class="">
+                <div class="inner" style="height:60em;">
+                    <div class="company-name">
+                        <h2 class="module-title" id="home">Fine-grained Cryptography</h2>
+                        <h4><a href="https://www.fsttcs.org.in/2022/">FSTTCS 2022</a> Workshop</h4>
+                        <h4><a href="https://www.iitm.ac.in/">IIT Madras</a></h4>
+                        <h4>December 17, 2022</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub_content_light">
+            <div class="container module">
+                <div class="row inner">
+                    <div class="col-lg-12">
+                        <h2 class="module-title" id="news">
+                            Overview
+                        </h2>
+                        <p style="text-align:center">
+                            A couple of paragraphs about the field.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+				
+        
+				<div class="sub_content_light">
+            <div class="container module">
+                <div class="row inner">
+                    <div class="col-md-12">
+                        <h2 class="module-title" id="team">Speakers</h2>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                        <a href="http://www.weizmann.ac.il/math/AmirAbboud/home"><img src="img/abboud.png" alt="Amir Abboud" class="img-responsive" style="height:200px;width:auto;"></a>
+                                    <div class="caption">
+                                        <h3>Amir Abboud</h3>
+                                        <p class="job_spec">Weizmann Institute</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                        <a href="https://sites.google.com/site/diveshhomepage/"><img src="img/aggarwal.jpeg" alt="Divesh Aggarwal" class="img-responsive" style="height:200px;width:auto;"></a>
+                                    <div class="caption">
+                                        <h3>Divesh Aggarwal</h3>
+                                        <p class="job_spec">National University of Singapore</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                        <a href="https://sites.google.com/view/rajendrak/home"><img src="img/kumar.jpg" alt="Rajendra Kumar" class="img-responsive" style="height:200px;width:auto;"></a>
+                                    <div class="caption">
+                                        <h3>Rajendra Kumar</h3>
+                                        <p class="job_spec">Weizmann Institute</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                        <a href="https://subhasree-patro.github.io/"><img src="img/patro.jpeg" alt="Subhasree Patro" class="img-responsive" style="height:200px;width:auto;"></a>
+                                    <div class="caption">
+                                        <h3>Subhasree Patro</h3>
+                                        <p class="job_spec">CWI Amsterdam</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                        <a href="https://www.alonrosen.net/"><img src="img/rosen.png" alt="Alon Rosen
+" class="img-responsive" style="height:200px;width:auto;"></a>
+                                    <div class="caption">
+                                        <h3>Alon Rosen
+</h3>
+                                        <p class="job_spec">Bocconi University</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                        <a href="https://sarsid.github.io/"><img src="img/saraogi.jpeg" alt="Sidhant Saraogi" class="img-responsive" style="height:200px;width:auto;"></a>
+                                    <div class="caption">
+                                        <h3>Sidhant Saraogi</h3>
+                                        <p class="job_spec">Georgetown University</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                        <a href="http://www.noahsd.com/"><img src="img/sd.jpeg" alt="Noah Stephens-Davidowitz
+" class="img-responsive" style="height:200px;width:auto;"></a>
+                                    <div class="caption">
+                                        <h3>Noah Stephens-Davidowitz
+</h3>
+                                        <p class="job_spec">Cornell University</p>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub_content_lightdark">
+            <div class="container module">
+                <div class="row inner">
+                    <div class="col-md-12">
+                        <h2 class="module-title" id="services">Schedule</h2>
+                        <table class="table table-striped">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Time</th>
+                      <th scope="col">Speaker</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Links</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                    <tr>
+                      <td scope="row">TBA</td>
+                      <td>TBA</td>
+                      <td>TBA</td>
+                      <td>TBA</td>
+                    </tr>
+                    </tbody>
+                </table>
+                        
+                        
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="sub_content_light">
+        <div class="container module">
+            <div class="row inner">
+                <div class="col-md-12">
+                    <h2 class="module-title">Location</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>TBA</p>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31101.130435430496!2d80.21571522430654!3d12.994778963789992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526781f3ce0c6b%3A0x41368df84c6db350!2sIndian%20Institute%20Of%20Technology%2C%20Chennai%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sus!4v1665198106776!5m2!1sen!2sus" height="375" width="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+				</div>
+    </div>
+    <footer>
+        <div class="container module">
+            <div class="row inner">
+            	<div class="col-md-23">
+            		<h4>Organizers</h4>
+                    <p>
+                        <a href="https://sites.google.com/site/diveshhomepage/">Divesh Aggarwal</a>, 
+                        <a href="https://web.engr.oregonstate.edu/~bennethu/">Huck Bennett</a>,
+                        <a href="https://golovnev.org/">Alexander Golovnev</a>, 
+                        <a href="https://sites.google.com/view/rajendrak/home">Rajendra Kumar</a>,
+                        <a href="http://www.noahsd.com/">Noah Stephens-Davidowitz</a>.
+                    </p>
+            	</div>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+<script>
+
+</script>
+</html>
